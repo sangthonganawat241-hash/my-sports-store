@@ -252,13 +252,29 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
+    // Helper to generate precise SVG Images per item
+    function makeSVG(bg1, bg2, label, category) {
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">' +
+        '<defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">' +
+        '<stop offset="0%" stop-color="' + bg1 + '"/>' +
+        '<stop offset="100%" stop-color="' + bg2 + '"/>' +
+        '</linearGradient></defs>' +
+        '<rect width="100%" height="100%" fill="url(#g)"/>' +
+        '<circle cx="300" cy="180" r="80" fill="rgba(255,255,255,0.08)"/>' +
+        '<text x="50%" y="42%" font-family="sans-serif" font-weight="900" font-size="24" fill="#ffffff" text-anchor="middle">' + label + '</text>' +
+        '<text x="50%" y="58%" font-family="sans-serif" font-weight="700" font-size="14" fill="#3b82f6" text-anchor="middle" letter-spacing="3">' + category + '</text>' +
+        '<text x="50%" y="85%" font-family="sans-serif" font-weight="600" font-size="12" fill="rgba(255,255,255,0.4)" text-anchor="middle">AETHER ATHLETICS OFFICIAL</text>' +
+        '</svg>';
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
+
     const products = [
       { 
         id: 1, 
         name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', 
         category: 'fitness', 
         price: 4200, 
-        img: 'https://picsum.photos/id/1080/600/400', 
+        img: makeSVG('#0f172a', '#1e293b', 'DUMBBELL PRO 24KG', 'FITNESS & WEIGHTS'), 
         tag: 'BESTSELLER' 
       },
       { 
@@ -266,14 +282,14 @@
         name: 'ถุงมือฟิตเนสเซฟข้อต่อ Quantum', 
         category: 'fitness', 
         price: 890, 
-        img: 'https://picsum.photos/id/1070/600/400' 
+        img: makeSVG('#1e1b4b', '#312e81', 'FITNESS GLOVES', 'FITNESS & WEIGHTS') 
       },
       { 
         id: 3, 
         name: 'รองเท้าวิ่งทำความเร็ว Carbon-Fly', 
         category: 'running', 
         price: 5400, 
-        img: 'https://picsum.photos/id/103/600/400', 
+        img: makeSVG('#064e3b', '#047857', 'CARBON-FLY SHOES', 'RUNNING & MARATHON'), 
         tag: 'NEW' 
       },
       { 
@@ -281,63 +297,63 @@
         name: 'นาฬิกาสปอร์ต GPS วัดอัตราหัวใจ', 
         category: 'running', 
         price: 7900, 
-        img: 'https://picsum.photos/id/175/600/400' 
+        img: makeSVG('#701a75', '#86198f', 'GPS SPORT WATCH', 'RUNNING & MARATHON') 
       },
       { 
         id: 5, 
         name: 'ไม้เทนนิส คาร์บอนไฟเบอร์ Raptor GT', 
         category: 'tennis', 
         price: 6200, 
-        img: 'https://picsum.photos/id/1058/600/400' 
+        img: makeSVG('#831843', '#9d174d', 'RAPTOR GT RACKET', 'TENNIS GEAR') 
       },
       { 
         id: 6, 
         name: 'ลูกเทนนิสเกรดแข่งขัน (4 ลูก)', 
         category: 'tennis', 
         price: 350, 
-        img: 'https://picsum.photos/id/1060/600/400' 
+        img: makeSVG('#713f12', '#a16207', 'TENNIS BALLS (4 PACK)', 'TENNIS GEAR') 
       },
       { 
         id: 7, 
         name: 'บาสเกตบอลหนังแท้เกรด Indoor', 
         category: 'basketball', 
         price: 2100, 
-        img: 'https://picsum.photos/id/158/600/400' 
+        img: makeSVG('#7c2d12', '#c2410c', 'INDOOR BASKETBALL', 'BASKETBALL') 
       },
       { 
         id: 8, 
         name: 'ไม้แบดมินตันสายบุก Astrox Power', 
         category: 'badminton', 
         price: 3800, 
-        img: 'https://picsum.photos/id/1069/600/400' 
+        img: makeSVG('#14532d', '#15803d', 'ASTROX BADMINTON', 'BADMINTON') 
       },
       { 
         id: 9, 
         name: 'ลูกฟุตบอลเย็บมือเกรดการแข่งขัน', 
         category: 'football', 
         price: 1450, 
-        img: 'https://picsum.photos/id/1074/600/400' 
+        img: makeSVG('#1e3a8a', '#1d4ed8', 'MATCH FOOTBALL', 'FOOTBALL') 
       },
       { 
         id: 10, 
         name: 'เสื่อโยคะ TPE กันลื่น หนา 8mm', 
         category: 'yoga', 
         price: 950, 
-        img: 'https://picsum.photos/id/1025/600/400' 
+        img: makeSVG('#581c87', '#7e22ce', 'YOGA MAT 8MM', 'YOGA & PILATES') 
       },
       { 
         id: 11, 
         name: 'นวมชกมวยหนังแท้ 12oz', 
         category: 'boxing', 
         price: 2300, 
-        img: 'https://picsum.photos/id/1062/600/400' 
+        img: makeSVG('#881337', '#be123c', 'BOXING GLOVES 12OZ', 'BOXING GEAR') 
       },
       { 
         id: 12, 
         name: 'เชือกกระโดดสปีดเบาพร้อมลูกปืน', 
         category: 'fitness', 
         price: 450, 
-        img: 'https://picsum.photos/id/1084/600/400' 
+        img: makeSVG('#134e4a', '#0f766e', 'SPEED JUMP ROPE', 'FITNESS & WEIGHTS') 
       }
     ];
 
