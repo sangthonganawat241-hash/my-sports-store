@@ -3,95 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AETHER SPORTS - Next Gen Gear</title>
+  <title>AETHER SPORTS - Next Gen Athletic Gear</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
-      theme: { extend: { colors: { brand: { accent: '#3b82f6' } } } }
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              accent: '#3b82f6',
+              accentHover: '#2563eb',
+            }
+          }
+        }
+      }
     }
   </script>
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 3D Logo Styling */
+    .logo-3d {
+      box-shadow: 4px 4px 0px 0px #3b82f6;
+      transition: all 0.2s ease;
+    }
+    .logo-3d:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px #3b82f6;
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-300 flex flex-col min-h-screen">
 
-  <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+  <!-- 1. HEADER & NAVIGATION -->
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- 3D Logo & Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="logo-3d w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg font-black text-xl flex items-center justify-center border-2 border-blue-500">
+          A
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-black tracking-wider leading-none text-slate-900 dark:text-white">AETHER</span>
+          <span class="text-[10px] font-bold text-blue-500 tracking-[0.25em]">SPORTS</span>
+        </div>
+      </a>
+
+      <!-- Menu Links -->
+      <nav class="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400">
+        <a href="#products" class="hover:text-blue-500 transition-colors">สินค้าทั้งหมด</a>
+        <a href="#payment" class="hover:text-blue-500 transition-colors">การชำระเงิน</a>
+        <a href="#contact" class="hover:text-blue-500 transition-colors">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Theme Toggle & Cart -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-white text-slate-900 rounded font-black text-xl flex items-center justify-center border-2 border-blue-500">A</div>
-        <span class="text-xl font-extrabold tracking-wider">AETHER <span class="text-blue-500 text-xs">SPORTS</span></span>
+        <!-- Dark/Light Mode Button -->
+        <button onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 transition-colors" title="เปลี่ยนโหมดมืด/สว่าง">
+          <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCart()" class="relative p-2.5 rounded-xl bg-blue-500 text-white hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/30">
+          <i class="fa-solid fa-cart-shopping text-base"></i>
+          <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white dark:border-slate-900">0</span>
+        </button>
       </div>
-      <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-blue-500 text-white">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
-      </button>
     </div>
   </header>
 
-  <section class="py-16 text-center border-b border-slate-800 bg-gradient-to-b from-blue-950/30 to-transparent">
-    <h1 class="text-4xl md:text-6xl font-black mb-4">ปลดล็อกขีดจำกัด <br><span class="text-blue-500">ด้วยอุปกรณ์กีฬาระดับโปร</span></h1>
-    <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">ยินดีต้อนรับสู่ AETHER SPORTS ร้านค้าอุปกรณ์กีฬาครบวงจร</p>
+  <!-- 2. HERO SECTION -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-blue-500/10 via-transparent to-transparent dark:from-blue-950/30 py-16 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <span class="inline-block bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-widest border border-blue-300 dark:border-blue-700">NEXT-GEN ATHLETIC GEAR</span>
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4 leading-tight">
+        ปลดล็อกขีดจำกัด <br><span class="text-blue-500">ด้วยอุปกรณ์กีฬาระดับโปร</span>
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg mb-8 max-w-2xl mx-auto">
+        อุปกรณ์กีฬาครอบคลุมทุกประเภท สายฟิตเนส วิ่ง เทนนิส บาสฯ แบดฯ มวย และอีกมากมาย ดีไซน์ทันสมัย ตอบโจทย์ทุกการซ้อมและการแข่ง
+      </p>
+      <a href="#products" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-extrabold px-8 py-3.5 rounded-xl shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
+        <span>เลือกชมสินค้า</span>
+        <i class="fa-solid fa-arrow-down"></i>
+      </a>
+    </div>
   </section>
 
-  <section class="max-w-7xl mx-auto px-4 py-12 flex-grow">
-    <h2 class="text-2xl font-bold mb-6">สินค้าแนะนำ</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-list"></div>
-  </section>
-
-  <!-- CART MODAL -->
-  <div id="cart-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-bold">ตะกร้าสินค้า</h3>
-        <button onclick="toggleCart()" class="text-slate-400"><i class="fa-solid fa-xmark text-xl"></i></button>
+  <!-- 3. PRODUCTS SECTION -->
+  <section id="products" class="max-w-7xl mx-auto px-4 py-12 flex-grow">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">คลังสินค้าอุปกรณ์กีฬา</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">เลือกซื้อตามหมวดหมู่กีฬาที่คุณชื่นชอบ</p>
       </div>
-      <div id="cart-items" class="space-y-3 mb-4 max-h-60 overflow-y-auto"></div>
-      <div class="flex justify-between font-bold mb-4"><span>รวมทั้งหมด:</span><span id="cart-total" class="text-blue-500">0 ฿</span></div>
-      <button onclick="checkout()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 rounded-xl">ชำระเงิน</button>
+
+      <!-- Category Filter -->
+      <div id="category-buttons" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-bold">
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-list">
+    </div>
+  </section>
+
+  <!-- 4. PAYMENT & CONTACT SECTION -->
+  <section class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8">
+      
+      <!-- PAYMENT SECTION -->
+      <div id="payment" class="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-900 dark:text-white">
+          <i class="fa-solid fa-credit-card text-blue-500"></i> ช่องทางการชำระเงิน
+        </h3>
+        <div class="space-y-3">
+          <!-- QR PromptPay -->
+          <button onclick="openGenericPaymentModal()" class="w-full text-left flex items-center gap-4 bg-slate-50 hover:bg-blue-50 dark:bg-slate-900 dark:hover:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 transition-all group">
+            <i class="fa-solid fa-qrcode text-2xl text-blue-500 group-hover:scale-110 transition-transform w-8 text-center"></i>
+            <div class="flex-grow">
+              <p class="font-bold text-sm text-slate-900 dark:text-white">พร้อมเพย์ / Thai QR Payment</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">สแกนจ่ายผ่าน Mobile Banking ได้ทุกธนาคาร</p>
+            </div>
+            <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+          </button>
+
+          <!-- Bank Transfer -->
+          <button onclick="copyBankAccount('1234567890')" class="w-full text-left flex items-center gap-4 bg-slate-50 hover:bg-blue-50 dark:bg-slate-900 dark:hover:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 transition-all group">
+            <i class="fa-solid fa-building-columns text-2xl text-blue-500 group-hover:scale-110 transition-transform w-8 text-center"></i>
+            <div class="flex-grow">
+              <p class="font-bold text-sm text-slate-900 dark:text-white">โอนผ่านบัญชีธนาคาร</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">ธนาคารกสิกรไทย: <span class="font-mono font-bold text-blue-500">123-4-56789-0</span> (บจก. เอเธอร์ สปอร์ต)</p>
+            </div>
+            <span class="text-[10px] bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-bold px-2 py-1 rounded border border-blue-300 dark:border-blue-700">คัดลอก</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CONTACT SECTION -->
+      <div id="contact" class="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-900 dark:text-white">
+          <i class="fa-solid fa-headset text-blue-500"></i> ติดต่อเรา & บริการลูกค้า
+        </h3>
+        <div class="space-y-3 text-sm">
+          <!-- LINE -->
+          <a href="https://line.me" target="_blank" class="flex items-center gap-3 bg-slate-50 hover:bg-green-50 dark:bg-slate-900 dark:hover:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-green-500 transition-all group">
+            <i class="fa-brands fa-line text-green-500 text-2xl group-hover:scale-110 transition-transform w-8 text-center"></i>
+            <div class="flex-grow">
+              <p class="font-bold text-slate-900 dark:text-white">LINE Official Account</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">@aethersports (สอบถามข้อมูล แชตได้ 24 ชม.)</p>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-slate-400 group-hover:text-green-500 text-xs"></i>
+          </a>
+
+          <!-- Call Center -->
+          <a href="tel:021234567" class="flex items-center gap-3 bg-slate-50 hover:bg-blue-50 dark:bg-slate-900 dark:hover:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 transition-all group">
+            <i class="fa-solid fa-phone text-blue-500 text-xl group-hover:scale-110 transition-transform w-8 text-center"></i>
+            <div class="flex-grow">
+              <p class="font-bold text-slate-900 dark:text-white">Call Center</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">02-123-4567 (โทรออกทันที)</p>
+            </div>
+            <i class="fa-solid fa-phone-flip text-slate-400 group-hover:text-blue-500 text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500">
+    <p>&copy; 2026 AETHER SPORTS. All rights reserved.</p>
+  </footer>
+
+  <!-- 5. CART MODAL -->
+  <div id="cart-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl">
+      <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+        <h3 class="text-lg font-bold flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-blue-500"></i> ตะกร้าสินค้าของคุณ
+        </h3>
+        <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+
+      <div id="cart-items" class="max-h-60 overflow-y-auto space-y-3 mb-4 pr-1">
+      </div>
+
+      <div class="border-t border-slate-100 dark:border-slate-800 pt-4">
+        <div class="flex justify-between font-bold text-base mb-4">
+          <span>ราคารวมทั้งหมด:</span>
+          <span id="cart-total" class="text-blue-500 font-black text-xl">0 ฿</span>
+        </div>
+        <button onclick="checkout()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-500/30 transition-colors">
+          ดำเนินการชำระเงิน
+        </button>
+      </div>
     </div>
   </div>
 
+  <!-- 6. QR CODE PAYMENT MODAL -->
+  <div id="payment-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-sm p-6 shadow-2xl text-center">
+      <div class="flex justify-between items-center mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
+        <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <i class="fa-solid fa-qrcode text-blue-500"></i> สแกนเพื่อชำระเงิน
+        </h3>
+        <button onclick="closePaymentModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">สแกน QR Code ด้วยแอปพลิเคชันธนาคารของคุณ</p>
+      
+      <div class="bg-white p-4 rounded-xl inline-block border-2 border-blue-500 mb-3 shadow-inner">
+        <img id="qr-image" src="" alt="QR Code Payment" class="w-44 h-44 mx-auto object-contain">
+      </div>
+
+      <div class="bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 rounded-xl p-3 mb-4">
+        <p class="text-xs text-slate-600 dark:text-slate-400">ยอดที่ต้องชำระสุทธิ</p>
+        <p id="payment-total" class="text-2xl font-black text-blue-500">0 ฿</p>
+      </div>
+
+      <button onclick="confirmPayment()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-xl shadow-lg shadow-green-500/30 transition-colors">
+        <i class="fa-solid fa-check-circle mr-1"></i> ยืนยันชำระเงินเรียบร้อย
+      </button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
   <script>
+    // 12 REALISTIC PRODUCTS WITH MATCHING IMAGES
     const products = [
-      { id: 1, name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', price: 4200, img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500' },
-      { id: 2, name: 'รองเท้าวิ่ง Carbon-Fly', price: 5400, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500' },
-      { id: 3, name: 'ไม้เทนนิส Raptor GT', price: 6200, img: 'https://images.unsplash.com/photo-1617083934555-ac7d4fed8814?w=500' },
-      { id: 4, name: 'บาสเกตบอล Indoor', price: 2100, img: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?w=500' }
+      { id: 1, name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', category: 'fitness', price: 4200, img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80', tag: 'BESTSELLER' },
+      { id: 2, name: 'ถุงมือฟิตเนสเซฟข้อต่อ Quantum', category: 'fitness', price: 890, img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80' },
+      { id: 3, name: 'รองเท้าวิ่งทำความเร็ว Carbon-Fly', category: 'running', price: 5400, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80', tag: 'NEW' },
+      { id: 4, name: 'นาฬิกาสปอร์ต GPS วัดอัตราหัวใจ', category: 'running', price: 7900, img: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80' },
+      { id: 5, name: 'ไม้เทนนิส คาร์บอนไฟเบอร์ Raptor GT', category: 'tennis', price: 6200, img: 'https://images.unsplash.com/photo-1617083934555-ac7d4fed8814?auto=format&fit=crop&w=600&q=80' },
+      { id: 6, name: 'ลูกเทนนิสเกรดแข่งขัน (4 ลูก)', category: 'tennis', price: 350, img: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=600&q=80' },
+      { id: 7, name: 'บาสเกตบอลหนังแท้เกรด Indoor', category: 'basketball', price: 2100, img: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=600&q=80' },
+      { id: 8, name: 'ไม้แบดมินตันสายบุก Astrox Power', category: 'badminton', price: 3800, img: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80' },
+      { id: 9, name: 'ลูกฟุตบอลเย็บมือเกรดการแข่งขัน', category: 'football', price: 1450, img: 'https://images.unsplash.com/photo-1614632537190-23e4146777db?auto=format&fit=crop&w=600&q=80' },
+      { id: 10, name: 'เสื่อโยคะ TPE กันลื่น หนา 8mm', category: 'yoga', price: 950, img: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&w=600&q=80' },
+      { id: 11, name: 'นวมชกมวยหนังแท้ 12oz', category: 'boxing', price: 2300, img: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80' },
+      { id: 12, name: 'เชือกกระโดดสปีดเบาพร้อมลูกปืน', category: 'fitness', price: 450, img: 'https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=600&q=80' }
     ];
+
+    const categories = [
+      { id: 'all', name: 'ทั้งหมด' },
+      { id: 'fitness', name: 'ฟิตเนส & เวท' },
+      { id: 'running', name: 'วิ่ง & มาราธอน' },
+      { id: 'tennis', name: 'เทนนิส' },
+      { id: 'basketball', name: 'บาสเกตบอล' },
+      { id: 'badminton', name: 'แบดมินตัน' },
+      { id: 'football', name: 'ฟุตบอล' },
+      { id: 'yoga', name: 'โยคะ' },
+      { id: 'boxing', name: 'มวย' }
+    ];
+
+    let currentCategory = 'all';
     let cart = [];
 
+    // TOGGLE DARK / LIGHT THEME
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.className = 'fa-solid fa-sun text-lg text-amber-500';
+      } else {
+        html.classList.add('dark');
+        icon.className = 'fa-solid fa-moon text-lg text-slate-300';
+      }
+    }
+
+    // RENDER CATEGORY BUTTONS
+    function renderCategoryButtons() {
+      const container = document.getElementById('category-buttons');
+      container.innerHTML = categories.map(cat => `
+        <button onclick="setCategory('${cat.id}')" 
+          class="px-4 py-2 rounded-xl border transition-all whitespace-nowrap ${
+            currentCategory === cat.id 
+            ? 'bg-blue-500 text-white border-blue-500 shadow-md shadow-blue-500/20' 
+            : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-blue-500'
+          }">
+          ${cat.name}
+        </button>
+      `).join('');
+    }
+
+    function setCategory(catId) {
+      currentCategory = catId;
+      renderCategoryButtons();
+      renderProducts();
+    }
+
+    // RENDER PRODUCTS
     function renderProducts() {
-      document.getElementById('product-list').innerHTML = products.map(p => `
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
-          <img src="${p.img}" class="w-full h-40 object-cover rounded-xl mb-3">
-          <h3 class="font-bold text-sm mb-2">${p.name}</h3>
-          <div class="flex justify-between items-center">
-            <span class="text-blue-500 font-bold">${p.price.toLocaleString()} ฿</span>
-            <button onclick="addToCart(${p.id})" class="bg-blue-500 text-white text-xs px-3 py-1.5 rounded-lg">เพิ่ม</button>
+      const list = document.getElementById('product-list');
+      const filtered = currentCategory === 'all' 
+        ? products 
+        : products.filter(p => p.category === currentCategory);
+
+      list.innerHTML = filtered.map(p => `
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group hover:shadow-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all flex flex-col justify-between">
+          <div class="relative overflow-hidden bg-slate-100 dark:bg-slate-800 h-48">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            ${p.tag ? `<span class="absolute top-3 left-3 bg-blue-500 text-white text-[10px] font-black px-2.5 py-1 rounded-md shadow">${p.tag}</span>` : ''}
+          </div>
+          <div class="p-4 flex-grow flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-2 line-clamp-2">${p.name}</h3>
+            </div>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <span class="text-blue-500 font-black text-lg">${p.price.toLocaleString()} ฿</span>
+              <button onclick="addToCart(${p.id})" class="bg-slate-100 hover:bg-blue-500 hover:text-white dark:bg-slate-800 dark:hover:bg-blue-500 text-slate-700 dark:text-slate-200 px-3 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-plus"></i> เพิ่ม
+              </button>
+            </div>
           </div>
         </div>
       `).join('');
     }
 
+    // CART SYSTEM LOGIC
     function addToCart(id) {
-      cart.push(products.find(p => p.id === id));
+      const product = products.find(p => p.id === id);
+      cart.push(product);
       updateCart();
     }
 
     function updateCart() {
       document.getElementById('cart-count').innerText = cart.length;
-      document.getElementById('cart-items').innerHTML = cart.map(i => `
-        <div class="flex justify-between text-xs bg-slate-800 p-2 rounded">
-          <span>${i.name}</span><span class="text-blue-400">${i.price} ฿</span>
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="text-slate-400 text-center py-8 text-sm">ไม่มีสินค้าในตะกร้า</p>';
+        cartTotal.innerText = '0 ฿';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="flex justify-between items-center bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-3">
+            <img src="${item.img}" class="w-10 h-10 object-cover rounded-lg">
+            <div>
+              <p class="font-bold text-xs text-slate-900 dark:text-white line-clamp-1">${item.name}</p>
+              <p class="text-blue-500 font-bold text-xs">${item.price.toLocaleString()} ฿</p>
+            </div>
+          </div>
+          <button onclick="removeFromCart(${index})" class="text-slate-400 hover:text-red-500 p-2 text-xs"><i class="fa-solid fa-trash"></i></button>
         </div>
       `).join('');
-      const total = cart.reduce((sum, i) => sum + i.price, 0);
-      document.getElementById('cart-total').innerText = total.toLocaleString() + ' ฿';
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      cartTotal.innerText = total.toLocaleString() + ' ฿';
     }
 
-    function toggleCart() { document.getElementById('cart-modal').classList.toggle('hidden'); }
-    function checkout() { alert('เปิดระบบชำระเงินเรียบร้อย!'); }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
 
+    function toggleCart() {
+      document.getElementById('cart-modal').classList.toggle('hidden');
+    }
+
+    // PAYMENT SYSTEM LOGIC
+    function checkout() {
+      if (cart.length === 0) return alert('กรุณาเลือกสินค้าลงตะกร้าก่อนครับ');
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      document.getElementById('payment-total').innerText = total.toLocaleString() + ' ฿';
+      document.getElementById('qr-image').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=AETHER_SPORTS_PAYMENT_${total}`;
+      toggleCart();
+      document.getElementById('payment-modal').classList.remove('hidden');
+    }
+
+    function openGenericPaymentModal() {
+      document.getElementById('payment-total').innerText = 'ตามยอดสั่งซื้อ';
+      document.getElementById('qr-image').src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=AETHER_SPORTS_PROMPTPAY';
+      document.getElementById('payment-modal').classList.remove('hidden');
+    }
+
+    function closePaymentModal() {
+      document.getElementById('payment-modal').classList.add('hidden');
+    }
+
+    function confirmPayment() {
+      alert('ขอบคุณสำหรับการสั่งซื้อ! ระบบบันทึกรายการชำระเงินเรียบร้อยแล้ว');
+      cart = [];
+      updateCart();
+      closePaymentModal();
+    }
+
+    function copyBankAccount(accNumber) {
+      navigator.clipboard.writeText(accNumber).then(() => {
+        alert('คัดลอกเลขบัญชี 123-4-56789-0 เรียบร้อยแล้ว');
+      });
+    }
+
+    // INITIAL RENDER
+    renderCategoryButtons();
     renderProducts();
   </script>
 </body>
