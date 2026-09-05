@@ -252,29 +252,13 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Helper to generate precise SVG Images per item
-    function makeSVG(bg1, bg2, label, category) {
-      const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">' +
-        '<defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">' +
-        '<stop offset="0%" stop-color="' + bg1 + '"/>' +
-        '<stop offset="100%" stop-color="' + bg2 + '"/>' +
-        '</linearGradient></defs>' +
-        '<rect width="100%" height="100%" fill="url(#g)"/>' +
-        '<circle cx="300" cy="180" r="80" fill="rgba(255,255,255,0.08)"/>' +
-        '<text x="50%" y="42%" font-family="sans-serif" font-weight="900" font-size="24" fill="#ffffff" text-anchor="middle">' + label + '</text>' +
-        '<text x="50%" y="58%" font-family="sans-serif" font-weight="700" font-size="14" fill="#3b82f6" text-anchor="middle" letter-spacing="3">' + category + '</text>' +
-        '<text x="50%" y="85%" font-family="sans-serif" font-weight="600" font-size="12" fill="rgba(255,255,255,0.4)" text-anchor="middle">AETHER ATHLETICS OFFICIAL</text>' +
-        '</svg>';
-      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-    }
-
     const products = [
       { 
         id: 1, 
         name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', 
         category: 'fitness', 
         price: 4200, 
-        img: makeSVG('#0f172a', '#1e293b', 'DUMBBELL PRO 24KG', 'FITNESS & WEIGHTS'), 
+        img: 'https://picsum.photos/seed/dumbbell/600/400', 
         tag: 'BESTSELLER' 
       },
       { 
@@ -282,14 +266,14 @@
         name: 'ถุงมือฟิตเนสเซฟข้อต่อ Quantum', 
         category: 'fitness', 
         price: 890, 
-        img: makeSVG('#1e1b4b', '#312e81', 'FITNESS GLOVES', 'FITNESS & WEIGHTS') 
+        img: 'https://picsum.photos/seed/fitnessgloves/600/400' 
       },
       { 
         id: 3, 
         name: 'รองเท้าวิ่งทำความเร็ว Carbon-Fly', 
         category: 'running', 
         price: 5400, 
-        img: makeSVG('#064e3b', '#047857', 'CARBON-FLY SHOES', 'RUNNING & MARATHON'), 
+        img: 'https://picsum.photos/seed/runningshoes/600/400', 
         tag: 'NEW' 
       },
       { 
@@ -297,63 +281,63 @@
         name: 'นาฬิกาสปอร์ต GPS วัดอัตราหัวใจ', 
         category: 'running', 
         price: 7900, 
-        img: makeSVG('#701a75', '#86198f', 'GPS SPORT WATCH', 'RUNNING & MARATHON') 
+        img: 'https://picsum.photos/seed/smartwatch/600/400' 
       },
       { 
         id: 5, 
         name: 'ไม้เทนนิส คาร์บอนไฟเบอร์ Raptor GT', 
         category: 'tennis', 
         price: 6200, 
-        img: makeSVG('#831843', '#9d174d', 'RAPTOR GT RACKET', 'TENNIS GEAR') 
+        img: 'https://picsum.photos/seed/tennisracket/600/400' 
       },
       { 
         id: 6, 
         name: 'ลูกเทนนิสเกรดแข่งขัน (4 ลูก)', 
         category: 'tennis', 
         price: 350, 
-        img: makeSVG('#713f12', '#a16207', 'TENNIS BALLS (4 PACK)', 'TENNIS GEAR') 
+        img: 'https://picsum.photos/seed/tennisballs/600/400' 
       },
       { 
         id: 7, 
         name: 'บาสเกตบอลหนังแท้เกรด Indoor', 
         category: 'basketball', 
         price: 2100, 
-        img: makeSVG('#7c2d12', '#c2410c', 'INDOOR BASKETBALL', 'BASKETBALL') 
+        img: 'https://picsum.photos/seed/basketball/600/400' 
       },
       { 
         id: 8, 
         name: 'ไม้แบดมินตันสายบุก Astrox Power', 
         category: 'badminton', 
         price: 3800, 
-        img: makeSVG('#14532d', '#15803d', 'ASTROX BADMINTON', 'BADMINTON') 
+        img: 'https://picsum.photos/seed/badminton/600/400' 
       },
       { 
         id: 9, 
         name: 'ลูกฟุตบอลเย็บมือเกรดการแข่งขัน', 
         category: 'football', 
         price: 1450, 
-        img: makeSVG('#1e3a8a', '#1d4ed8', 'MATCH FOOTBALL', 'FOOTBALL') 
+        img: 'https://picsum.photos/seed/soccerball/600/400' 
       },
       { 
         id: 10, 
         name: 'เสื่อโยคะ TPE กันลื่น หนา 8mm', 
         category: 'yoga', 
         price: 950, 
-        img: makeSVG('#581c87', '#7e22ce', 'YOGA MAT 8MM', 'YOGA & PILATES') 
+        img: 'https://picsum.photos/seed/yogamat/600/400' 
       },
       { 
         id: 11, 
         name: 'นวมชกมวยหนังแท้ 12oz', 
         category: 'boxing', 
         price: 2300, 
-        img: makeSVG('#881337', '#be123c', 'BOXING GLOVES 12OZ', 'BOXING GEAR') 
+        img: 'https://picsum.photos/seed/boxinggloves/600/400' 
       },
       { 
         id: 12, 
         name: 'เชือกกระโดดสปีดเบาพร้อมลูกปืน', 
         category: 'fitness', 
         price: 450, 
-        img: makeSVG('#134e4a', '#0f766e', 'SPEED JUMP ROPE', 'FITNESS & WEIGHTS') 
+        img: 'https://picsum.photos/seed/jumprope/600/400' 
       }
     ];
 
@@ -413,7 +397,7 @@
       list.innerHTML = filtered.map(p => `
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group hover:shadow-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all flex flex-col justify-between">
           <div class="relative overflow-hidden bg-slate-100 dark:bg-slate-800 h-48 cursor-pointer" onclick="openImageModal(${p.id})">
-            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
             ${p.tag ? `<span class="absolute top-3 left-3 bg-blue-500 text-white text-[10px] font-black px-2.5 py-1 rounded-md shadow">${p.tag}</span>` : ''}
             
             <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
