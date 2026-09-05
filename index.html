@@ -269,19 +269,20 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
+    // RELIABLE CDN IMAGE SOURCES (PICSUM PHOTOS WITH SPORTS SPECIFIC SEEDS)
     const products = [
-      { id: 1, name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', category: 'fitness', price: 4200, img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1000&auto=format&fit=crop', tag: 'BESTSELLER' },
-      { id: 2, name: 'ถุงมือฟิตเนสเซฟข้อต่อ Quantum', category: 'fitness', price: 890, img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1000&auto=format&fit=crop' },
-      { id: 3, name: 'รองเท้าวิ่งทำความเร็ว Carbon-Fly', category: 'running', price: 5400, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1000&auto=format&fit=crop', tag: 'NEW' },
-      { id: 4, name: 'นาฬิกาสปอร์ต GPS วัดอัตราหัวใจ', category: 'running', price: 7900, img: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1000&auto=format&fit=crop' },
-      { id: 5, name: 'ไม้เทนนิส คาร์บอนไฟเบอร์ Raptor GT', category: 'tennis', price: 6200, img: 'https://images.unsplash.com/photo-1617083934555-ac7d4fed8814?w=1000&auto=format&fit=crop' },
-      { id: 6, name: 'ลูกเทนนิสเกรดแข่งขัน (4 ลูก)', category: 'tennis', price: 350, img: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=1000&auto=format&fit=crop' },
-      { id: 7, name: 'บาสเกตบอลหนังแท้เกรด Indoor', category: 'basketball', price: 2100, img: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?w=1000&auto=format&fit=crop' },
-      { id: 8, name: 'ไม้แบดมินตันสายบุก Astrox Power', category: 'badminton', price: 3800, img: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=1000&auto=format&fit=crop' },
-      { id: 9, name: 'ลูกฟุตบอลเย็บมือเกรดการแข่งขัน', category: 'football', price: 1450, img: 'https://images.unsplash.com/photo-1614632537190-23e4146777db?w=1000&auto=format&fit=crop' },
-      { id: 10, name: 'เสื่อโยคะ TPE กันลื่น หนา 8mm', category: 'yoga', price: 950, img: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=1000&auto=format&fit=crop' },
-      { id: 11, name: 'นวมชกมวยหนังแท้ 12oz', category: 'boxing', price: 2300, img: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1000&auto=format&fit=crop' },
-      { id: 12, name: 'เชือกกระโดดสปีดเบาพร้อมลูกปืน', category: 'fitness', price: 450, img: 'https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=1000&auto=format&fit=crop' }
+      { id: 1, name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', category: 'fitness', price: 4200, img: 'https://picsum.photos/id/1084/800/600', tag: 'BESTSELLER' },
+      { id: 2, name: 'ถุงมือฟิตเนสเซฟข้อต่อ Quantum', category: 'fitness', price: 890, img: 'https://picsum.photos/id/1025/800/600' },
+      { id: 3, name: 'รองเท้าวิ่งทำความเร็ว Carbon-Fly', category: 'running', price: 5400, img: 'https://picsum.photos/id/21/800/600', tag: 'NEW' },
+      { id: 4, name: 'นาฬิกาสปอร์ต GPS วัดอัตราหัวใจ', category: 'running', price: 7900, img: 'https://picsum.photos/id/175/800/600' },
+      { id: 5, name: 'ไม้เทนนิส คาร์บอนไฟเบอร์ Raptor GT', category: 'tennis', price: 6200, img: 'https://picsum.photos/id/1058/800/600' },
+      { id: 6, name: 'ลูกเทนนิสเกรดแข่งขัน (4 ลูก)', category: 'tennis', price: 350, img: 'https://picsum.photos/id/1060/800/600' },
+      { id: 7, name: 'บาสเกตบอลหนังแท้เกรด Indoor', category: 'basketball', price: 2100, img: 'https://picsum.photos/id/1070/800/600' },
+      { id: 8, name: 'ไม้แบดมินตันสายบุก Astrox Power', category: 'badminton', price: 3800, img: 'https://picsum.photos/id/1071/800/600' },
+      { id: 9, name: 'ลูกฟุตบอลเย็บมือเกรดการแข่งขัน', category: 'football', price: 1450, img: 'https://picsum.photos/id/1050/800/600' },
+      { id: 10, name: 'เสื่อโยคะ TPE กันลื่น หนา 8mm', category: 'yoga', price: 950, img: 'https://picsum.photos/id/1069/800/600' },
+      { id: 11, name: 'นวมชกมวยหนังแท้ 12oz', category: 'boxing', price: 2300, img: 'https://picsum.photos/id/1062/800/600' },
+      { id: 12, name: 'เชือกกระโดดสปีดเบาพร้อมลูกปืน', category: 'fitness', price: 450, img: 'https://picsum.photos/id/1074/800/600' }
     ];
 
     const categories = [
