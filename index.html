@@ -204,20 +204,17 @@
     </div>
   </div>
 
-  <!-- 6. IMAGE LIGHTBOX MODAL (สำหรับขยายดูรูปภาพใหญ่) -->
+  <!-- 6. IMAGE LIGHTBOX MODAL -->
   <div id="image-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative">
-      <!-- Close Button -->
       <button onclick="closeImageModal()" class="absolute top-3 right-3 z-10 bg-black/50 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
-      <!-- Image Display -->
       <div class="w-full md:w-1/2 bg-slate-950 flex items-center justify-center min-h-[280px]">
         <img id="modal-image" src="" alt="Product Large View" class="w-full h-full object-cover">
       </div>
 
-      <!-- Details & Actions -->
       <div class="w-full md:w-1/2 p-6 flex flex-col justify-between">
         <div>
           <span id="modal-tag" class="hidden inline-block bg-blue-500 text-white text-[10px] font-black px-2.5 py-1 rounded-md mb-2"></span>
@@ -269,20 +266,20 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // RELIABLE CDN IMAGE SOURCES (PICSUM PHOTOS WITH SPORTS SPECIFIC SEEDS)
+    // DIRECT SPORTS IMAGES FROM UNSPLASH SOURCE API
     const products = [
-      { id: 1, name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', category: 'fitness', price: 4200, img: 'https://picsum.photos/id/1084/800/600', tag: 'BESTSELLER' },
-      { id: 2, name: 'ถุงมือฟิตเนสเซฟข้อต่อ Quantum', category: 'fitness', price: 890, img: 'https://picsum.photos/id/1025/800/600' },
-      { id: 3, name: 'รองเท้าวิ่งทำความเร็ว Carbon-Fly', category: 'running', price: 5400, img: 'https://picsum.photos/id/21/800/600', tag: 'NEW' },
-      { id: 4, name: 'นาฬิกาสปอร์ต GPS วัดอัตราหัวใจ', category: 'running', price: 7900, img: 'https://picsum.photos/id/175/800/600' },
-      { id: 5, name: 'ไม้เทนนิส คาร์บอนไฟเบอร์ Raptor GT', category: 'tennis', price: 6200, img: 'https://picsum.photos/id/1058/800/600' },
-      { id: 6, name: 'ลูกเทนนิสเกรดแข่งขัน (4 ลูก)', category: 'tennis', price: 350, img: 'https://picsum.photos/id/1060/800/600' },
-      { id: 7, name: 'บาสเกตบอลหนังแท้เกรด Indoor', category: 'basketball', price: 2100, img: 'https://picsum.photos/id/1070/800/600' },
-      { id: 8, name: 'ไม้แบดมินตันสายบุก Astrox Power', category: 'badminton', price: 3800, img: 'https://picsum.photos/id/1071/800/600' },
-      { id: 9, name: 'ลูกฟุตบอลเย็บมือเกรดการแข่งขัน', category: 'football', price: 1450, img: 'https://picsum.photos/id/1050/800/600' },
-      { id: 10, name: 'เสื่อโยคะ TPE กันลื่น หนา 8mm', category: 'yoga', price: 950, img: 'https://picsum.photos/id/1069/800/600' },
-      { id: 11, name: 'นวมชกมวยหนังแท้ 12oz', category: 'boxing', price: 2300, img: 'https://picsum.photos/id/1062/800/600' },
-      { id: 12, name: 'เชือกกระโดดสปีดเบาพร้อมลูกปืน', category: 'fitness', price: 450, img: 'https://picsum.photos/id/1074/800/600' }
+      { id: 1, name: 'ดัมเบลปรับน้ำหนัก Pro-Hex 24kg', category: 'fitness', price: 4200, img: 'https://source.unsplash.com/featured/800x600/?dumbbell,gym', tag: 'BESTSELLER' },
+      { id: 2, name: 'ถุงมือฟิตเนสเซฟข้อต่อ Quantum', category: 'fitness', price: 890, img: 'https://source.unsplash.com/featured/800x600/?fitness,gloves' },
+      { id: 3, name: 'รองเท้าวิ่งทำความเร็ว Carbon-Fly', category: 'running', price: 5400, img: 'https://source.unsplash.com/featured/800x600/?running,shoes', tag: 'NEW' },
+      { id: 4, name: 'นาฬิกาสปอร์ต GPS วัดอัตราหัวใจ', category: 'running', price: 7900, img: 'https://source.unsplash.com/featured/800x600/?smartwatch,sport' },
+      { id: 5, name: 'ไม้เทนนิส คาร์บอนไฟเบอร์ Raptor GT', category: 'tennis', price: 6200, img: 'https://source.unsplash.com/featured/800x600/?tennis,racket' },
+      { id: 6, name: 'ลูกเทนนิสเกรดแข่งขัน (4 ลูก)', category: 'tennis', price: 350, img: 'https://source.unsplash.com/featured/800x600/?tennis,ball' },
+      { id: 7, name: 'บาสเกตบอลหนังแท้เกรด Indoor', category: 'basketball', price: 2100, img: 'https://source.unsplash.com/featured/800x600/?basketball' },
+      { id: 8, name: 'ไม้แบดมินตันสายบุก Astrox Power', category: 'badminton', price: 3800, img: 'https://source.unsplash.com/featured/800x600/?badminton' },
+      { id: 9, name: 'ลูกฟุตบอลเย็บมือเกรดการแข่งขัน', category: 'football', price: 1450, img: 'https://source.unsplash.com/featured/800x600/?soccer,football' },
+      { id: 10, name: 'เสื่อโยคะ TPE กันลื่น หนา 8mm', category: 'yoga', price: 950, img: 'https://source.unsplash.com/featured/800x600/?yoga,mat' },
+      { id: 11, name: 'นวมชกมวยหนังแท้ 12oz', category: 'boxing', price: 2300, img: 'https://source.unsplash.com/featured/800x600/?boxing,gloves' },
+      { id: 12, name: 'เชือกกระโดดสปีดเบาพร้อมลูกปืน', category: 'fitness', price: 450, img: 'https://source.unsplash.com/featured/800x600/?jump,rope' }
     ];
 
     const categories = [
@@ -344,7 +341,7 @@
       list.innerHTML = filtered.map(p => `
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group hover:shadow-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all flex flex-col justify-between">
           <div class="relative overflow-hidden bg-slate-100 dark:bg-slate-800 h-48 cursor-pointer" onclick="openImageModal(${p.id})">
-            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800'">
             ${p.tag ? `<span class="absolute top-3 left-3 bg-blue-500 text-white text-[10px] font-black px-2.5 py-1 rounded-md shadow">${p.tag}</span>` : ''}
             
             <!-- Zoom Icon Overlay -->
